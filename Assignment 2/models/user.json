@@ -1,0 +1,21 @@
+{
+    "id": {
+        "required": true, 
+        "unique": true,
+        "length": 20
+    },
+    "name":{
+        "max-length": 20,
+        "min-length": 2
+    },
+    "email": {
+        "required": true, 
+        "unique": true,
+        "max-length": 30,
+        "min-length": 5
+    },
+    "password":{
+        "required": true,
+        "min-length": 8
+    }
+}
