@@ -8,7 +8,8 @@ const dev = {
     },
     https:{
         port: 4433
-    }
+    },
+    secret: "mysecretapplicationtoken"
 };
 
 //for production
@@ -18,7 +19,8 @@ const prod = {
     },
     https:{
         port: 443
-    }
+    },
+    secret: "mysecretapplicationtoken"
 };
 
 const config = {

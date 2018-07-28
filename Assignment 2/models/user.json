@@ -1,9 +1,4 @@
 {
-    "id": {
-        "required": true, 
-        "unique": true,
-        "length": 20
-    },
     "name":{
         "max-length": 20,
         "min-length": 2
