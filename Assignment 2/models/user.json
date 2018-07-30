@@ -1,5 +1,6 @@
 {
     "name":{
+        "required": true,
         "max-length": 20,
         "min-length": 2
     },
@@ -9,8 +10,15 @@
         "max-length": 30,
         "min-length": 5
     },
-    "password":{
+    "zipcode": {
         "required": true,
-        "min-length": 8
+        "length": 6
+    },
+    "street": {
+        "required": true,
+        "length": 6
+    },
+    "steernr": {
+        "required": true
     }
 }

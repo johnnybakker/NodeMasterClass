@@ -29,6 +29,13 @@ class DataService{
         this.model = _models[collection];
     }
 
+    //Parse payload to object
+    payloadToObject(payload){
+        let object = {};
+        for(key in this.model) object[key] = payload[key];
+        return object;
+    }
+
     //Create a file with content of object
     create(object, cb){
         let _self = this;

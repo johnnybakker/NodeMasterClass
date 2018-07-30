@@ -32,18 +32,20 @@ class Server{
 
 //Private functions
 function requestHandler(req, res){
-    let request = new Request(req);
-    let response = new Response(res);
-    let controller = _controllers[request.PathName.toLowerCase()];
-    if(controller != null){
-        let handler = controller[request.Method.toLowerCase()]
-        if(handler != null && typeof(handler) == "function")
-            handler(request, response);
-        else
-            response.SendJsonWithCode(405, {error: "Method not allowed"});
-    }else{
-        response.SendJsonWithCode(404, {error: "Not found"});
-    }
+    //Wait for request to be handled then handle response
+    let request = new Request(req, () =>{
+        let response = new Response(res);
+        let controller = _controllers[request.PathName.toLowerCase()];
+        if(controller != null){
+            let handler = controller[request.Method.toLowerCase()]
+            if(handler != null && typeof(handler) == "function")
+                handler(request, response);
+            else
+                response.SendJsonWithCode(405, {error: "Method not allowed"});
+        }else{
+            response.SendJsonWithCode(404, {error: "Not found"});
+        }
+    });
 }
 
 //Find controllers and add them to the _controller variable
