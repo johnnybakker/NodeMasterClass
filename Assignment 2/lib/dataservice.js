@@ -32,7 +32,9 @@ class DataService{
     //Parse payload to object
     payloadToObject(payload){
         let object = {};
-        for(key in this.model) object[key] = payload[key];
+        for(let key in this.model) {
+            if(payload[key] !== undefined) object[key] = payload[key];
+        }
         return object;
     }
 

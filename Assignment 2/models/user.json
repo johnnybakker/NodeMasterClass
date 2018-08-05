@@ -16,9 +16,9 @@
     },
     "street": {
         "required": true,
-        "length": 6
+        "min-length": 6
     },
-    "steernr": {
+    "streetnr": {
         "required": true
     }
 }
