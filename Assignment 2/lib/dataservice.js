@@ -172,6 +172,30 @@ class DataService{
         })
     }
 
+    search(object, cb){
+        const _self = this;
+        fs.readdir(_self.collectionFolder, function(err, files){
+            let searchCount = 0;
+            let results = [];
+            for(let file of files){
+                let fullPath = path.join(_self.collectionFolder, file);
+                fs.readFile(fullPath, "utf8", function(err, buffer){
+                    let objectString = buffer.toString();
+                    let record = JSON.parse(objectString);
+                    let match = true;
+                    for(let key in object){
+                        if(object[key] != record[key]){
+                            match = false;
+                        }
+                    }
+                    if(match) results.push(record);
+                    searchCount++;
+                    if(searchCount == files.length) cb(results);
+                });
+            }
+        });
+    }
+
     //Delete a file by id
     delete(id, cb){
         let _self = this;

@@ -3,6 +3,9 @@
 const config = require('./config');
 const crypto = require('crypto');
 
+//Helper extentions
+const DateHelper = require('./datehelper');
+
 //Helper class
 class Helper{
     
@@ -37,6 +40,9 @@ class Helper{
             return false;
         }
     }
+
+    
+    static get Date() { return DateHelper; }
 }
 
 module.exports = Helper
